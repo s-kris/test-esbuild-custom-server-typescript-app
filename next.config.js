@@ -1,3 +1,4 @@
+const withCSS = require('@zeit/next-css');
 const {
 	ESBuildPlugin,
 	ESBuildMinifyPlugin,
@@ -23,7 +24,7 @@ function useEsbuildLoader(config, options) {
 	}
 }
 
-module.exports = {
+module.exports = withCSS({
 	webpack: (config, { webpack }) => {
 		config.plugins.push(
 			new ESBuildPlugin(),
@@ -42,4 +43,4 @@ module.exports = {
 
 		return config;
 	},
-};
+});
